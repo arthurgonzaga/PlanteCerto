@@ -1,77 +1,47 @@
-@file:SuppressLint("ConflictingOnColor")
-
 package br.com.plantecerto.ui.theme
 
-import android.annotation.SuppressLint
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material.Colors
 import androidx.compose.material.MaterialTheme
-import androidx.compose.material.darkColors
-import androidx.compose.material.lightColors
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.graphics.Color
+import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.runtime.compositionLocalOf
+import androidx.compose.runtime.livedata.observeAsState
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewmodel.compose.viewModel
 
-val CornPallete = lightColors(
-    primary = GreenPrimary,
-    primaryVariant = GreenPrimaryVariant,
-    secondary = GreenSecondary,
-    background = GreenPrimary,
-    onBackground = White
-)
-
-val CoffeePallete = lightColors(
-    primary = BrownPrimary,
-    primaryVariant = BrownPrimaryVariant,
-    secondary = BrownSecondary,
-    background = BrownPrimary,
-    onBackground = White
-)
-
-val BeansPallete = CoffeePallete
-
-val SoyPallete = lightColors(
-    primary = BrightYellowPrimary,
-    primaryVariant = BrightYellowPrimaryVariant,
-    secondary = BrightYellowSecondary,
-    background = BrightYellowPrimary,
-    onBackground = BrightYellowOnBackground
-)
-
-val BananaPallete = lightColors(
-    primary = YellowPrimary,
-    primaryVariant = YellowPrimaryVariant,
-    secondary = YellowSecondary,
-    background = YellowPrimary,
-    onBackground = YellowSecondaryOnBackground
-)
-
-val GuavaPallete = lightColors(
-    primary = BrightRedPrimary,
-    primaryVariant = BrightRedPrimaryVariant,
-    secondary = BrightRedSecondary,
-    background = BrightRedPrimary,
-    onBackground = BrightRedSecondaryOnBackground
-)
-
+enum class Themes(val pallete: Colors) {
+    CORN(pallete = CornPallete),
+    COFFEE(pallete = CoffeePallete),
+    BEANS(pallete = BeansPallete),
+    SOY(pallete = SoyPallete),
+    BANANA(pallete = BananaPallete),
+    GUAVA(pallete = GuavaPallete)
+}
 
 @Composable
 fun PlanteCertoTheme(
-    darkTheme: Boolean = isSystemInDarkTheme(),
+    viewModel: ThemeViewModel = viewModel(),
     content: @Composable () -> Unit
 ) {
-    val colors = if (darkTheme) {
-        DarkColorPalette
-    } else {
-        LightColorPalette
-    }
-
+    val currentTheme = viewModel.theme.observeAsState(Themes.CORN)
     MaterialTheme(
-        colors = colors,
+        colors = currentTheme.value.pallete,
         typography = Typography,
         shapes = Shapes,
         content = content
     )
 }
 
+class ThemeViewModel: ViewModel() {
+    private val _theme = MutableLiveData(Themes.CORN)
+    val theme: LiveData<Themes> = _theme
+
+    fun onThemeChange(theme: Themes) {
+        _theme.value = theme
+    }
+}
 
 
