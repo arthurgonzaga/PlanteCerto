@@ -1,3 +1,25 @@
 
 f
 6app/src/main/java/br/com/plantecerto/ui/theme/Color.kt,f\2\f280ae04ee4280ae769118cef1436b36d5978e52
+s
+Capp/src/main/java/br/com/plantecerto/ui/utils/ModifierExtentions.kt,a\b\ab8835c5cbdc6dabd0b107942f14e8af2172f1e6
+@
+app/build.gradle,f\4\f4a01d6a4fcb971362ec00a83903fd3902f52164
+i
+9app/src/main/java/br/com/plantecerto/ui/theme/Palletes.kt,6\8\68ace23c016a7a9ceb57c905f31a07c705f24a57
+u
+Eapp/src/main/java/br/com/plantecerto/ui/components/ListBottomSheet.kt,6\7\671b02f564e218fa9d9daff87cac2ba4f6505679
+d
+4app/src/main/java/br/com/plantecerto/MainActivity.kt,f\f\ff6d008efe501f432659b3fcecf9b61ba0229325
+e
+5app/src/main/java/br/com/plantecerto/ui/theme/Type.kt,d\6\d67b1023ccb36ef8a54f45fdc0ccbeef8e0df898
+r
+Bapp/src/main/java/br/com/plantecerto/domain/info/BananaPageData.kt,1\7\17428b3943a0f9be4f1c92fc4aff75a88333b9f6
+r
+Bapp/src/main/java/br/com/plantecerto/domain/info/CoffeePageData.kt,6\9\691e501d613e3989cf7b5965e165b6e362a45a0b
+q
+Aapp/src/main/java/br/com/plantecerto/domain/info/GuavaPageData.kt,0\c\0c5b1cb2154f6fb19669ed01d8be8bf706c863be
+o
+?app/src/main/java/br/com/plantecerto/domain/info/SoyPageData.kt,f\9\f95d8551524ee0eefd80dd1c8c8205c5e0649685
+s
+Capp/src/main/java/br/com/plantecerto/ui/components/TopInfoLayout.kt,4\6\4691038b7392e41152b1bd5ea7778d067a37cb70

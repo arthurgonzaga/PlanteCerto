@@ -18,17 +18,9 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewmodel.compose.viewModel
+import br.com.plantecerto.domain.data.Themes
 
 const val ThemeLabelTransition = "ThemeLabelTransition"
-
-enum class Themes(val pallete: Colors) {
-    CORN(pallete = CornPallete),
-    COFFEE(pallete = CoffeePallete),
-    BEANS(pallete = BeansPallete),
-    SOY(pallete = SoyPallete),
-    BANANA(pallete = BananaPallete),
-    GUAVA(pallete = GuavaPallete)
-}
 
 @Composable
 fun PlanteCertoTheme(

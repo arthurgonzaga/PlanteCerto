@@ -17,9 +17,9 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import br.com.plantecerto.ui.components.ListBottomSheet
 import br.com.plantecerto.ui.components.ListData
 import br.com.plantecerto.ui.components.ListItem
+import br.com.plantecerto.ui.components.TopInfoLayout
 import br.com.plantecerto.ui.theme.PlanteCertoTheme
 import br.com.plantecerto.ui.theme.ThemeViewModel
-import br.com.plantecerto.ui.theme.Themes
 import kotlin.random.Random
 
 class MainActivity : ComponentActivity() {
@@ -33,7 +33,7 @@ class MainActivity : ComponentActivity() {
                         modifier = Modifier.fillMaxSize(),
                         color = MaterialTheme.colors.background
                     ) {
-
+                        TopInfoLayout()
                     }
                 }
             }
