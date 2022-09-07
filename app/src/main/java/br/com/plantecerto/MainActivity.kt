@@ -14,7 +14,9 @@ import androidx.compose.runtime.currentComposer
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.viewmodel.compose.viewModel
-import br.com.plantecerto.ui.theme.LocalTheme
+import br.com.plantecerto.ui.components.ListBottomSheet
+import br.com.plantecerto.ui.components.ListData
+import br.com.plantecerto.ui.components.ListItem
 import br.com.plantecerto.ui.theme.PlanteCertoTheme
 import br.com.plantecerto.ui.theme.ThemeViewModel
 import br.com.plantecerto.ui.theme.Themes
@@ -26,19 +28,13 @@ class MainActivity : ComponentActivity() {
         setContent {
             val vm: ThemeViewModel = viewModel()
             PlanteCertoTheme(viewModel = vm) {
-                // A surface container using the 'background' color from the theme
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colors.background
-                ) {
-                    Button(
-                        content = {
-                            Text("Change theme")
-                        },
-                        onClick = {
-                            vm.onThemeChange(Themes.GUAVA)
-                        }
-                    )
+                ListBottomSheet {
+                    Surface(
+                        modifier = Modifier.fillMaxSize(),
+                        color = MaterialTheme.colors.background
+                    ) {
+
+                    }
                 }
             }
         }
