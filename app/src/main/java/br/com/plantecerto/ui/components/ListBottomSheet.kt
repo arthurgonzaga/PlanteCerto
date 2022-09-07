@@ -75,8 +75,10 @@ fun ListBottomSheet(
                         ListItem(
                             data = item,
                             onClick = {
-                                coroutineScope.launch { state.bottomSheetState.collapse() }
-                                coroutineScope.launch { vm.onThemeChange(it.theme) }
+                                coroutineScope.launch {
+                                    state.bottomSheetState.collapse()
+                                    vm.onThemeChange(it.theme)
+                                }
                             }
                         )
                     }
