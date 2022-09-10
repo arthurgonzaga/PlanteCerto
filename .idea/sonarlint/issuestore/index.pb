@@ -1,10 +1,6 @@
 
 f
 6app/src/main/java/br/com/plantecerto/ui/theme/Color.kt,f\2\f280ae04ee4280ae769118cef1436b36d5978e52
-s
-Capp/src/main/java/br/com/plantecerto/ui/utils/ModifierExtentions.kt,a\b\ab8835c5cbdc6dabd0b107942f14e8af2172f1e6
-i
-9app/src/main/java/br/com/plantecerto/ui/theme/Palletes.kt,6\8\68ace23c016a7a9ceb57c905f31a07c705f24a57
 e
 5app/src/main/java/br/com/plantecerto/ui/theme/Type.kt,d\6\d67b1023ccb36ef8a54f45fdc0ccbeef8e0df898
 r
@@ -15,15 +11,9 @@ q
 Aapp/src/main/java/br/com/plantecerto/domain/info/GuavaPageData.kt,0\c\0c5b1cb2154f6fb19669ed01d8be8bf706c863be
 o
 ?app/src/main/java/br/com/plantecerto/domain/info/SoyPageData.kt,f\9\f95d8551524ee0eefd80dd1c8c8205c5e0649685
-j
-:app/src/main/java/br/com/plantecerto/domain/data/Themes.kt,c\c\cc941d41c18de3315891fd79669b73bdcffff8a6
 p
 @app/src/main/java/br/com/plantecerto/domain/info/CornPageData.kt,3\6\36d1a06a0f19e84bac6e12aab6922f7440fffd49
 q
 Aapp/src/main/java/br/com/plantecerto/domain/info/BeansPageData.kt,d\0\d0f380e5b878d1e6663e45d402837558f7e50998
 l
 <app/src/main/java/br/com/plantecerto/domain/data/PageData.kt,e\b\eb74b79ed61cd34af63c1dfdb1e9a31f489305a2
-f
-6app/src/main/java/br/com/plantecerto/ui/theme/Shape.kt,b\8\b8c4c62bff665dfafadd71b47c9f2f37c773132a
-<
-build.gradle,f\0\f07866736216be0ee2aba49e392191aeae700a35

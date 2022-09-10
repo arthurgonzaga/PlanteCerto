@@ -23,6 +23,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import br.com.plantecerto.R
 import br.com.plantecerto.domain.data.Themes
 import br.com.plantecerto.ui.theme.*
+import br.com.plantecerto.ui.utils.LogCompositions
 import br.com.plantecerto.ui.utils.noRippleClickable
 import kotlinx.coroutines.async
 import kotlinx.coroutines.delay
@@ -48,8 +49,9 @@ private val DefaultList = listOf(
 @Composable
 fun ListBottomSheet(
     vm: ThemeViewModel = viewModel(),
-    content: @Composable () -> Unit,
+    content: @Composable (PaddingValues) -> Unit
 ) {
+    LogCompositions("ListBottomSheet","")
     val coroutineScope = rememberCoroutineScope()
 
     val state = rememberBottomSheetScaffoldState(
@@ -71,14 +73,14 @@ fun ListBottomSheet(
                 },
             ) {
                 Spacer(modifier = Modifier.height(48.dp))
-                LazyColumn {
-                    items(DefaultList) { item ->
+                Column {
+                    DefaultList.forEach { item ->
                         ListItem(
                             data = item,
                             onClick = {
+                                vm.onThemeChange(it.theme)
                                 coroutineScope.launch {
                                     state.bottomSheetState.collapse()
-                                    vm.onThemeChange(it.theme)
                                 }
                             }
                         )
@@ -87,12 +89,13 @@ fun ListBottomSheet(
                 Spacer(modifier = Modifier.height(32.dp))
             }
         },
-        content = { content() },
+        content = content
     )
 }
 
 @Composable
 fun ListItem(
+    vm: ThemeViewModel = viewModel(),
     data: ListData,
     onClick: (data: ListData) -> Unit,
 ) {
@@ -109,7 +112,7 @@ fun ListItem(
                 .clip(MaterialTheme.shapes.small)
                 .border(
                     width = 2.dp,
-                    color = MaterialTheme.colors.secondary,
+                    color = vm.getPallete().secondary,
                     shape = MaterialTheme.shapes.small
                 )
         ) {
@@ -122,7 +125,7 @@ fun ListItem(
         Text(
             modifier = Modifier.padding(start = 16.dp),
             text = data.title,
-            color = MaterialTheme.colors.secondary
+            color = vm.getPallete().secondary
         )
         Spacer(modifier = Modifier.weight(1.0f))
         Image(
@@ -131,16 +134,4 @@ fun ListItem(
             contentDescription = null,
         )
     }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun ListBottomSheetPrev() {
-    ListBottomSheet() {}
-}
-
-@Preview(showBackground = true)
-@Composable
-fun ListItemPrev() {
-    ListItem(ListData(R.drawable.ic_launcher_background, "Teste titulo", Themes.GUAVA)) {}
 }

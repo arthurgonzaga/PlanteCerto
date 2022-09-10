@@ -1,6 +1,7 @@
 package br.com.plantecerto.ui.components
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
 import androidx.compose.material.TabRowDefaults.tabIndicatorOffset
@@ -10,34 +11,52 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import br.com.plantecerto.ui.utils.noRippleClickable
+import androidx.lifecycle.viewmodel.compose.viewModel
+import br.com.plantecerto.ui.theme.ThemeViewModel
+import br.com.plantecerto.ui.utils.LogCompositions
+import br.com.plantecerto.ui.utils.NoRippleInteractionSource
+import com.google.accompanist.pager.ExperimentalPagerApi
+import com.google.accompanist.pager.PagerState
+import com.google.accompanist.pager.pagerTabIndicatorOffset
+import kotlinx.coroutines.launch
 
 /**
  * Created by Arthur Gonzaga on 9/7/2022
  */
+@OptIn(ExperimentalPagerApi::class)
 @Composable
 fun TabSelector(
+    vm: ThemeViewModel = viewModel(),
     modifier: Modifier = Modifier,
-    selectedIndex: MutableState<Int>,
+    pagerState: PagerState,
     titles: List<String>
 ) {
+    val selectedIndex = pagerState.currentPage
+    val coroutineScope = rememberCoroutineScope()
+
+    LogCompositions("TabSelector","")
     TabRow(
-        modifier = modifier.height(55.dp).padding(horizontal = 28.dp).fillMaxWidth(),
+        modifier = modifier
+            .height(55.dp)
+            .padding(horizontal = 28.dp)
+            .fillMaxWidth(),
         divider = {},
         backgroundColor = Color.Transparent,
-        indicator = { TabIndicator(tabPositions = it, selected = selectedIndex.value) },
-        selectedTabIndex = selectedIndex.value
+        indicator = { TabIndicator(vm = vm, tabPositions = it, pagerState = pagerState) },
+        selectedTabIndex = selectedIndex
     ) {
         titles.forEachIndexed { index, s ->
-            val isSelected = selectedIndex.value == index
+            val isSelected = selectedIndex == index
 
             Tab(
                 selected = isSelected,
+                interactionSource = NoRippleInteractionSource(),
                 onClick = {
-                    selectedIndex.value = index
+                    coroutineScope.launch {
+                        pagerState.animateScrollToPage(index)
+                    }
                 },
             ) {
                 Text(
@@ -51,9 +70,9 @@ fun TabSelector(
                         }
                     ),
                     color = if(isSelected) {
-                        MaterialTheme.colors.onBackground
+                        vm.getPallete().onBackground
                     } else {
-                        MaterialTheme.colors.secondary
+                        vm.getPallete().secondary
                     }
                 )
             }
@@ -62,20 +81,22 @@ fun TabSelector(
     }
 }
 
+@OptIn(ExperimentalPagerApi::class)
 @Composable
 fun TabIndicator(
+    vm: ThemeViewModel,
     tabPositions: List<TabPosition>,
-    selected: Int
+    pagerState: PagerState
 ) {
     Box(
         Modifier
-            .tabIndicatorOffset(tabPositions[selected])
+            .pagerTabIndicatorOffset(pagerState, tabPositions)
             .height(4.dp)
             .padding(horizontal = 42.dp)
             .offset(y = (-5).dp)
             .clip(shape = MaterialTheme.shapes.medium)
             .background(
-                color = MaterialTheme.colors.onBackground,
+                color = vm.getPallete().onBackground,
                 shape = MaterialTheme.shapes.medium
             )
     )

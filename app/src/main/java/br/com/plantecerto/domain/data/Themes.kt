@@ -7,7 +7,7 @@ import br.com.plantecerto.ui.theme.*
 /**
  * Created by Arthur Gonzaga on 9/7/2022
  */
-enum class Themes(val pallete: Colors, val pageData: PageData) {
+enum class Themes(val pallete: Pallete, val pageData: PageData) {
     CORN(pallete = CornPallete, pageData = CornPageData),
     COFFEE(pallete = CoffeePallete, pageData = CoffeePageData),
     BEANS(pallete = BeansPallete, pageData = BeansPageData),

@@ -1,8 +1,10 @@
 package br.com.plantecerto.ui.screen
 
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.offset
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.*
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Surface
+import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -14,25 +16,45 @@ import br.com.plantecerto.ui.components.TabSelector
 import br.com.plantecerto.ui.components.TopInfoLayout
 import br.com.plantecerto.ui.theme.PlanteCertoTheme
 import br.com.plantecerto.ui.theme.ThemeViewModel
+import com.google.accompanist.pager.ExperimentalPagerApi
+import com.google.accompanist.pager.HorizontalPager
+import com.google.accompanist.pager.PagerState
+import com.google.accompanist.pager.rememberPagerState
 
 
+@OptIn(ExperimentalPagerApi::class)
 @Composable
-fun DetailScreen() {
-    val vm: ThemeViewModel = viewModel()
+fun DetailScreen(
+    vm: ThemeViewModel = viewModel(),
+    pagerState: PagerState
+) {
 
     val tabTitles = listOf("Informações", "Pragas", "Previsões")
-    val tabIndexSelected = remember { mutableStateOf(0) }
 
-    PlanteCertoTheme(viewModel = vm) {
-        ListBottomSheet {
+    Column(
+        modifier = Modifier
+            .background(
+                color = vm.getPallete().background
+            )
+    ){
+        TopInfoLayout()
+        TabSelector(
+            modifier = Modifier.absoluteOffset(y = (-50).dp),
+            titles = tabTitles,
+            pagerState = pagerState
+        )
+        HorizontalPager(
+            modifier = Modifier.absoluteOffset(y = (-50).dp),
+            count = tabTitles.size,
+            userScrollEnabled = false,
+            state = pagerState,
+        ) { page ->
             Column(
-                modifier = Modifier.fillMaxSize()
+                Modifier.fillMaxSize()
             ) {
-                TopInfoLayout()
-                TabSelector(
-                    modifier = Modifier.offset(y = (-60).dp),
-                    titles = tabTitles,
-                    selectedIndex = tabIndexSelected
+                Text(
+                    text = "$page",
+                    color = vm.getPallete().onBackground
                 )
             }
         }

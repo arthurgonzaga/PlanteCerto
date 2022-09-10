@@ -3,10 +3,34 @@
 package br.com.plantecerto.ui.theme
 
 import android.annotation.SuppressLint
+import androidx.compose.animation.animateColor
+import androidx.compose.animation.core.updateTransition
 import androidx.compose.material.lightColors
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.ui.graphics.Color
+import br.com.plantecerto.domain.data.Themes
 
+data class Pallete(
+    val primary: Color,
+    val primaryVariant: Color,
+    val secondary: Color,
+    val background: Color,
+    val onBackground: Color,
+)
 
-val CornPallete = lightColors(
+@Composable
+fun updateTransitionTheme(themes: Themes): Pallete {
+    val transition = updateTransition(themes, label = ThemeLabelTransition)
+    val primary = transition.animateColor(label = ThemeLabelTransition) { it.pallete.primary }.value
+    val primaryVariant = transition.animateColor(label = ThemeLabelTransition) { it.pallete.primaryVariant }.value
+    val secondary = transition.animateColor(label = ThemeLabelTransition) { it.pallete.secondary }.value
+    val background = transition.animateColor(label = ThemeLabelTransition) { it.pallete.background }.value
+    val onBackground = transition.animateColor(label = ThemeLabelTransition) { it.pallete.onBackground }.value
+    return Pallete(primary, primaryVariant, secondary, background, onBackground)
+}
+
+val CornPallete = Pallete(
     primary = GreenPrimary,
     primaryVariant = GreenPrimaryVariant,
     secondary = GreenSecondary,
@@ -14,7 +38,7 @@ val CornPallete = lightColors(
     onBackground = White
 )
 
-val CoffeePallete = lightColors(
+val CoffeePallete = Pallete(
     primary = BrownPrimary,
     primaryVariant = BrownPrimaryVariant,
     secondary = BrownSecondary,
@@ -24,7 +48,7 @@ val CoffeePallete = lightColors(
 
 val BeansPallete = CoffeePallete
 
-val SoyPallete = lightColors(
+val SoyPallete = Pallete(
     primary = BrightYellowPrimary,
     primaryVariant = BrightYellowPrimaryVariant,
     secondary = BrightYellowSecondary,
@@ -32,7 +56,7 @@ val SoyPallete = lightColors(
     onBackground = BrightYellowOnBackground
 )
 
-val BananaPallete = lightColors(
+val BananaPallete = Pallete(
     primary = YellowPrimary,
     primaryVariant = YellowPrimaryVariant,
     secondary = YellowSecondary,
@@ -40,7 +64,7 @@ val BananaPallete = lightColors(
     onBackground = YellowSecondaryOnBackground
 )
 
-val GuavaPallete = lightColors(
+val GuavaPallete = Pallete(
     primary = BrightRedPrimary,
     primaryVariant = BrightRedPrimaryVariant,
     secondary = BrightRedSecondary,

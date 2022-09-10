@@ -19,11 +19,25 @@ import br.com.plantecerto.ui.components.*
 import br.com.plantecerto.ui.screen.DetailScreen
 import br.com.plantecerto.ui.theme.PlanteCertoTheme
 import br.com.plantecerto.ui.theme.ThemeViewModel
+import br.com.plantecerto.ui.utils.LogCompositions
+import com.google.accompanist.pager.ExperimentalPagerApi
+import com.google.accompanist.pager.rememberPagerState
 import kotlin.random.Random
 
 class MainActivity : ComponentActivity() {
+    
+    @OptIn(ExperimentalPagerApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContent { DetailScreen() }
+        setContent {
+            val vm: ThemeViewModel = viewModel()
+            val pagerState = rememberPagerState()
+            PlanteCertoTheme() {
+                LogCompositions("MainActivity","")
+                ListBottomSheet {
+                    DetailScreen(pagerState = pagerState)
+                }
+            }
+        }
     }
 }
