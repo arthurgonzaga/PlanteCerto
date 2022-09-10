@@ -11,6 +11,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Colors
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.lightColors
+import androidx.compose.material.ripple.LocalRippleTheme
 import androidx.compose.runtime.*
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.unit.dp
@@ -19,6 +20,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewmodel.compose.viewModel
 import br.com.plantecerto.domain.data.Themes
+import br.com.plantecerto.ui.utils.NoRippleTheme
 
 const val ThemeLabelTransition = "ThemeLabelTransition"
 
@@ -29,18 +31,20 @@ fun PlanteCertoTheme(
 ) {
     val transition = updateTransition(targetState = viewModel.theme, label = ThemeLabelTransition)
 
-    MaterialTheme(
-        colors = lightColors(
-            primary = transition.animateColor(label = ThemeLabelTransition) { it.value.pallete.primary }.value,
-            primaryVariant = transition.animateColor(label = ThemeLabelTransition) { it.value.pallete.primaryVariant }.value,
-            secondary = transition.animateColor(label = ThemeLabelTransition) { it.value.pallete.secondary }.value,
-            background = transition.animateColor(label = ThemeLabelTransition) { it.value.pallete.background }.value,
-            onBackground = transition.animateColor(label = ThemeLabelTransition) { it.value.pallete.onBackground }.value,
-        ),
-        typography = Typography,
-        shapes = Shapes,
-        content = content
-    )
+    CompositionLocalProvider(LocalRippleTheme provides NoRippleTheme) {
+        MaterialTheme(
+            colors = lightColors(
+                primary = transition.animateColor(label = ThemeLabelTransition) { it.value.pallete.primary }.value,
+                primaryVariant = transition.animateColor(label = ThemeLabelTransition) { it.value.pallete.primaryVariant }.value,
+                secondary = transition.animateColor(label = ThemeLabelTransition) { it.value.pallete.secondary }.value,
+                background = transition.animateColor(label = ThemeLabelTransition) { it.value.pallete.background }.value,
+                onBackground = transition.animateColor(label = ThemeLabelTransition) { it.value.pallete.onBackground }.value,
+            ),
+            typography = Typography,
+            shapes = Shapes,
+            content = content
+        )
+    }
     LaunchedEffect(key1 = true) {
         viewModel.init()
     }
