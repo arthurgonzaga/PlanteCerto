@@ -19,18 +19,17 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import br.com.plantecerto.R
-import br.com.plantecerto.ui.theme.ThemeViewModel
+import br.com.plantecerto.ui.theme.LocalTheme
+import br.com.plantecerto.ui.theme.getPallete
 import br.com.plantecerto.ui.utils.LogCompositions
 
 
 @OptIn(ExperimentalAnimationApi::class)
 @Composable
-fun TopInfoLayout(
-    vm: ThemeViewModel = viewModel()
-) {
+fun TopInfoLayout() {
 
     LogCompositions("TopInfoLayout","")
-    val pageData = vm.theme.value.pageData
+    val pageData = LocalTheme.current.value.pageData
 
     Box {
         Box(Modifier.fillMaxWidth()) {
@@ -63,13 +62,13 @@ fun TopInfoLayout(
             Spacer(Modifier.height(44.dp))
             Text(
                 text = pageData.title,
-                color = vm.getPallete().onBackground,
+                color = getPallete().onBackground,
                 style = MaterialTheme.typography.h1
             )
             Spacer(Modifier.height(12.dp))
             Text(
                 text = pageData.subtitle,
-                color = vm.getPallete().onBackground,
+                color = getPallete().onBackground,
                 style = MaterialTheme.typography.h2
             )
         }

@@ -14,7 +14,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
-import br.com.plantecerto.ui.theme.ThemeViewModel
+import br.com.plantecerto.ui.theme.getPallete
 import br.com.plantecerto.ui.utils.LogCompositions
 import br.com.plantecerto.ui.utils.NoRippleInteractionSource
 import com.google.accompanist.pager.ExperimentalPagerApi
@@ -28,7 +28,6 @@ import kotlinx.coroutines.launch
 @OptIn(ExperimentalPagerApi::class)
 @Composable
 fun TabSelector(
-    vm: ThemeViewModel = viewModel(),
     modifier: Modifier = Modifier,
     pagerState: PagerState,
     titles: List<String>
@@ -44,7 +43,7 @@ fun TabSelector(
             .fillMaxWidth(),
         divider = {},
         backgroundColor = Color.Transparent,
-        indicator = { TabIndicator(vm = vm, tabPositions = it, pagerState = pagerState) },
+        indicator = { TabIndicator(tabPositions = it, pagerState = pagerState) },
         selectedTabIndex = selectedIndex
     ) {
         titles.forEachIndexed { index, s ->
@@ -70,9 +69,9 @@ fun TabSelector(
                         }
                     ),
                     color = if(isSelected) {
-                        vm.getPallete().onBackground
+                        getPallete().onBackground
                     } else {
-                        vm.getPallete().secondary
+                        getPallete().secondary
                     }
                 )
             }
@@ -84,7 +83,6 @@ fun TabSelector(
 @OptIn(ExperimentalPagerApi::class)
 @Composable
 fun TabIndicator(
-    vm: ThemeViewModel,
     tabPositions: List<TabPosition>,
     pagerState: PagerState
 ) {
@@ -96,7 +94,7 @@ fun TabIndicator(
             .offset(y = (-5).dp)
             .clip(shape = MaterialTheme.shapes.medium)
             .background(
-                color = vm.getPallete().onBackground,
+                color = getPallete().onBackground,
                 shape = MaterialTheme.shapes.medium
             )
     )

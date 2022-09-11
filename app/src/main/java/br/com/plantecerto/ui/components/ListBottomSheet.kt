@@ -48,7 +48,6 @@ private val DefaultList = listOf(
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
 fun ListBottomSheet(
-    vm: ThemeViewModel = viewModel(),
     content: @Composable (PaddingValues) -> Unit
 ) {
     LogCompositions("ListBottomSheet","")
@@ -57,6 +56,7 @@ fun ListBottomSheet(
     val state = rememberBottomSheetScaffoldState(
         bottomSheetState = BottomSheetState(BottomSheetValue.Collapsed)
     )
+    val theme = LocalTheme.current
 
     BottomSheetScaffold(
         sheetPeekHeight = 38.dp,
@@ -78,7 +78,7 @@ fun ListBottomSheet(
                         ListItem(
                             data = item,
                             onClick = {
-                                vm.onThemeChange(it.theme)
+                                theme.value = it.theme
                                 coroutineScope.launch {
                                     state.bottomSheetState.collapse()
                                 }
@@ -95,7 +95,6 @@ fun ListBottomSheet(
 
 @Composable
 fun ListItem(
-    vm: ThemeViewModel = viewModel(),
     data: ListData,
     onClick: (data: ListData) -> Unit,
 ) {
@@ -112,7 +111,7 @@ fun ListItem(
                 .clip(MaterialTheme.shapes.small)
                 .border(
                     width = 2.dp,
-                    color = vm.getPallete().secondary,
+                    color = getPallete().secondary,
                     shape = MaterialTheme.shapes.small
                 )
         ) {
@@ -125,7 +124,7 @@ fun ListItem(
         Text(
             modifier = Modifier.padding(start = 16.dp),
             text = data.title,
-            color = vm.getPallete().secondary
+            color = getPallete().secondary
         )
         Spacer(modifier = Modifier.weight(1.0f))
         Image(

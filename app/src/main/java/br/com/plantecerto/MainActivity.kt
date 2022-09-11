@@ -18,7 +18,6 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import br.com.plantecerto.ui.components.*
 import br.com.plantecerto.ui.screen.DetailScreen
 import br.com.plantecerto.ui.theme.PlanteCertoTheme
-import br.com.plantecerto.ui.theme.ThemeViewModel
 import br.com.plantecerto.ui.utils.LogCompositions
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.rememberPagerState
@@ -30,7 +29,6 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            val vm: ThemeViewModel = viewModel()
             val pagerState = rememberPagerState()
             PlanteCertoTheme() {
                 LogCompositions("MainActivity","")

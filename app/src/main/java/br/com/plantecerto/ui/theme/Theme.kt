@@ -16,6 +16,7 @@ import androidx.compose.material.ripple.LocalRippleTheme
 import androidx.compose.runtime.*
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalView
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -27,11 +28,18 @@ import br.com.plantecerto.ui.utils.NoRippleTheme
 
 const val ThemeLabelTransition = "ThemeLabelTransition"
 
+val LocalTheme = compositionLocalOf { mutableStateOf(Themes.CORN) }
+
 @Composable
 fun PlanteCertoTheme(
     content: @Composable () -> Unit
 ) {
-    CompositionLocalProvider(LocalRippleTheme provides NoRippleTheme) {
+    val theme = remember { mutableStateOf(Themes.CORN) }
+
+    CompositionLocalProvider(
+        LocalRippleTheme provides NoRippleTheme,
+        LocalTheme provides theme
+    ) {
         MaterialTheme(
             typography = Typography,
             shapes = Shapes,
@@ -40,18 +48,9 @@ fun PlanteCertoTheme(
     }
 }
 
-class ThemeViewModel: ViewModel() {
-    private val _theme = mutableStateOf(Themes.CORN)
-    val theme: State<Themes> = _theme
-
-    @Composable
-    fun getPallete(): Pallete {
-        return updateTransitionTheme(theme.value)
-    }
-
-    fun onThemeChange(theme: Themes) {
-        _theme.value = theme
-    }
-
+@Composable
+fun getPallete(): Pallete {
+    return updateTransitionTheme(LocalTheme.current.value)
 }
+
 

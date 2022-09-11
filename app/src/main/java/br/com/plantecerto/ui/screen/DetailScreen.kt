@@ -15,7 +15,7 @@ import br.com.plantecerto.ui.components.ListBottomSheet
 import br.com.plantecerto.ui.components.TabSelector
 import br.com.plantecerto.ui.components.TopInfoLayout
 import br.com.plantecerto.ui.theme.PlanteCertoTheme
-import br.com.plantecerto.ui.theme.ThemeViewModel
+import br.com.plantecerto.ui.theme.getPallete
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.PagerState
@@ -25,7 +25,6 @@ import com.google.accompanist.pager.rememberPagerState
 @OptIn(ExperimentalPagerApi::class)
 @Composable
 fun DetailScreen(
-    vm: ThemeViewModel = viewModel(),
     pagerState: PagerState
 ) {
 
@@ -34,7 +33,7 @@ fun DetailScreen(
     Column(
         modifier = Modifier
             .background(
-                color = vm.getPallete().background
+                color = getPallete().background
             )
     ){
         TopInfoLayout()
@@ -54,7 +53,7 @@ fun DetailScreen(
             ) {
                 Text(
                     text = "$page",
-                    color = vm.getPallete().onBackground
+                    color = getPallete().onBackground
                 )
             }
         }
