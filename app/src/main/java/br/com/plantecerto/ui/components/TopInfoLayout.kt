@@ -14,12 +14,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.drawWithCache
 import androidx.compose.ui.graphics.BlendMode
 import androidx.compose.ui.graphics.ImageBitmap
+import androidx.compose.ui.graphics.drawscope.DrawScope.Companion.DefaultBlendMode
 import androidx.compose.ui.res.imageResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import br.com.plantecerto.R
+import br.com.plantecerto.domain.data.Themes
 import br.com.plantecerto.ui.theme.LocalTheme
 import br.com.plantecerto.ui.theme.getPallete
 import br.com.plantecerto.ui.utils.LogCompositions
@@ -30,16 +32,19 @@ import br.com.plantecerto.ui.utils.LogCompositions
 fun TopInfoLayout() {
 
     LogCompositions("TopInfoLayout","")
-    val pageData = LocalTheme.current.value.pageData
+    val theme = LocalTheme.current.value
+    val pageData = theme.pageData
 
     Box {
         Box(Modifier.fillMaxWidth()) {
-            Image(
-                modifier = Modifier.fillMaxWidth(),
-                painter = painterResource(id = pageData.image),
-                contentDescription = null,
-                alignment = Alignment.TopEnd
-            )
+            pageData.image?.let { imageId ->
+                Image(
+                    modifier = Modifier.fillMaxWidth(),
+                    painter = painterResource(id = imageId),
+                    contentDescription = null,
+                    alignment = Alignment.TopEnd
+                )
+            }
         }
         Column(
             modifier = Modifier
@@ -58,13 +63,13 @@ fun TopInfoLayout() {
                 onDraw = {
                     drawImage(
                         image = logoImage,
-                        blendMode = BlendMode.Luminosity
+                        blendMode = if(theme != Themes.HOME) BlendMode.Luminosity else BlendMode.Overlay
                     )
                 }
             )
             Spacer(Modifier.height(44.dp))
             Text(
-                modifier = Modifier.fillMaxWidth(0.5f),
+                modifier = Modifier.fillMaxWidth(if(theme != Themes.HOME) 0.5f else 0.8f),
                 text = pageData.title,
                 color = getPallete().onBackground,
                 style = MaterialTheme.typography.h1

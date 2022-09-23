@@ -9,7 +9,7 @@ data class PageData(
     val title: String,
     val subtitle: String,
     @DrawableRes
-    val image: Int,
+    val image: Int?,
     val data: HashMap<Int, List<Info>>
 )
 

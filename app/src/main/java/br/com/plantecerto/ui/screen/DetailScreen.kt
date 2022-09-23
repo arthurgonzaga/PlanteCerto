@@ -21,6 +21,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import br.com.plantecerto.domain.data.TextInfo
+import br.com.plantecerto.domain.data.Themes
 import br.com.plantecerto.ui.components.ListBottomSheet
 import br.com.plantecerto.ui.components.PageInfo
 import br.com.plantecerto.ui.components.TabSelector
@@ -36,10 +37,10 @@ import com.google.accompanist.pager.rememberPagerState
 @OptIn(ExperimentalPagerApi::class)
 @Composable
 fun DetailScreen(
+    theme: Themes,
     pagerState: PagerState
 ) {
     val tabTitles = listOf("Informações", "Pragas", "Previsões")
-    val theme = LocalTheme.current.value
 
     Column(
         modifier = Modifier
@@ -78,4 +79,5 @@ fun DetailScreen(
             }
         }
     }
+
 }

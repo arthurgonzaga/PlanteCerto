@@ -7,6 +7,8 @@ import br.com.plantecerto.ui.theme.*
  * Created by Arthur Gonzaga on 9/7/2022
  */
 enum class Themes(val pallete: Pallete, val pageData: PageData) {
+    HOME(pallete = CornPallete, pageData = HomePageData),
+    REFERENCES(pallete = CornPallete, pageData = CornPageData),
     CORN(pallete = CornPallete, pageData = CornPageData),
     COFFEE(pallete = CoffeePallete, pageData = CoffeePageData),
     BEANS(pallete = BeansPallete, pageData = BeansPageData),

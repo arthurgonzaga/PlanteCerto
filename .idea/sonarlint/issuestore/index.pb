@@ -19,16 +19,10 @@ q
 Aapp/src/main/java/br/com/plantecerto/ui/components/TabSelector.kt,4\e\4ee019ace4ac0d68388f2bf39809c73279873e9e
 s
 Capp/src/main/java/br/com/plantecerto/ui/utils/ModifierExtentions.kt,a\b\ab8835c5cbdc6dabd0b107942f14e8af2172f1e6
-s
-Capp/src/main/java/br/com/plantecerto/ui/components/TopInfoLayout.kt,4\6\4691038b7392e41152b1bd5ea7778d067a37cb70
 <
 build.gradle,f\0\f07866736216be0ee2aba49e392191aeae700a35
-j
-:app/src/main/java/br/com/plantecerto/domain/data/Themes.kt,c\c\cc941d41c18de3315891fd79669b73bdcffff8a6
 o
 ?app/src/main/java/br/com/plantecerto/domain/info/SoyPageData.kt,f\9\f95d8551524ee0eefd80dd1c8c8205c5e0649685
-r
-Bapp/src/main/java/br/com/plantecerto/domain/info/BananaPageData.kt,1\7\17428b3943a0f9be4f1c92fc4aff75a88333b9f6
 q
 Aapp/src/main/java/br/com/plantecerto/domain/info/BeansPageData.kt,d\0\d0f380e5b878d1e6663e45d402837558f7e50998
 @

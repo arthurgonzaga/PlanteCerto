@@ -29,13 +29,13 @@ import br.com.plantecerto.ui.utils.NoRippleTheme
 
 const val ThemeLabelTransition = "ThemeLabelTransition"
 
-val LocalTheme = compositionLocalOf { mutableStateOf(Themes.CORN) }
+val LocalTheme = compositionLocalOf { mutableStateOf(Themes.HOME) }
 
 @Composable
 fun PlanteCertoTheme(
     content: @Composable () -> Unit
 ) {
-    val theme = rememberSaveable { mutableStateOf(Themes.CORN) }
+    val theme = rememberSaveable { mutableStateOf(Themes.HOME) }
 
     CompositionLocalProvider(
         LocalRippleTheme provides NoRippleTheme,

@@ -4,6 +4,7 @@ import android.app.Activity
 import androidx.annotation.DrawableRes
 import androidx.compose.animation.core.FloatTweenSpec
 import androidx.compose.animation.core.LinearOutSlowInEasing
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -13,6 +14,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -104,6 +106,15 @@ fun ListBottomSheet(
         },
         content = content
     )
+    LaunchedEffect(true) {
+        launch {
+            delay(2000)
+            state.bottomSheetState.animateTo(
+                BottomSheetValue.Expanded,
+                anim = tween(durationMillis = 1000)
+            )
+        }
+    }
 }
 
 @Composable
