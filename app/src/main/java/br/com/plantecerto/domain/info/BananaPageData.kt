@@ -8,7 +8,9 @@ val BananaPageData = PageData(
     title = "Banana",
     subtitle = "Lorem ipsum dolor\nsit\namet, consectetur\nadipiscing elit. Duis",
     image = R.drawable.banana_image,
-    info = emptyList(),
-    plagues = emptyList(),
-    previsions = emptyList(),
+    data = hashMapOf(
+        0 to emptyList(),
+        1 to emptyList(),
+        2 to emptyList()
+    ),
 )

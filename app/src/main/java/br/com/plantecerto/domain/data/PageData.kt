@@ -10,9 +10,7 @@ data class PageData(
     val subtitle: String,
     @DrawableRes
     val image: Int,
-    val info : List<Info>,
-    val plagues : List<Info>,
-    val previsions : List<Info>,
+    val data: HashMap<Int, List<Info>>
 )
 
 interface Info {

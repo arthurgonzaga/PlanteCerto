@@ -1,6 +1,5 @@
 package br.com.plantecerto.domain.data
 
-import androidx.compose.material.Colors
 import br.com.plantecerto.domain.info.*
 import br.com.plantecerto.ui.theme.*
 

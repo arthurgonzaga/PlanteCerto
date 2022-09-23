@@ -3,6 +3,7 @@ package br.com.plantecerto.ui.theme
 import androidx.compose.ui.graphics.Color
 
 val White = Color(0xFFFFFFFF)
+val Gray = Color(0xFFDBDBDB)
 
 val GreenPrimary = Color(0xFF2BA84A)
 val GreenPrimaryVariant = Color(0xFF27943D)

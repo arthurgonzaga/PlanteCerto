@@ -22,8 +22,20 @@ android {
 
     buildTypes {
         release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            // Enables code shrinking, obfuscation, and optimization for only
+            // your project's release build type.
+            minifyEnabled true
+
+            // Enables resource shrinking, which is performed by the
+            // Android Gradle plugin.
+            shrinkResources true
+
+            // Includes the default ProGuard rules files that are packaged with
+            // the Android Gradle plugin. To learn more, go to the section about
+            // R8 configuration files.
+            proguardFiles getDefaultProguardFile(
+                    'proguard-android-optimize.txt'),
+                    'proguard-rules.pro'
         }
     }
     compileOptions {
@@ -43,6 +55,10 @@ android {
         resources {
             excludes += '/META-INF/{AL2.0,LGPL2.1}'
         }
+    }
+
+    lintOptions {
+        checkReleaseBuilds false
     }
 }
 
@@ -65,8 +81,9 @@ dependencies {
     // ViewModel utilities for Compose
     implementation("androidx.lifecycle:lifecycle-viewmodel-compose:$lifecycle_version")
 
-    implementation "com.google.accompanist:accompanist-pager:0.25.0"
-    implementation "com.google.accompanist:accompanist-pager-indicators:0.25.0"
+    implementation "com.google.accompanist:accompanist-pager:0.26.2-beta"
+    implementation "com.google.accompanist:accompanist-pager-indicators:0.26.2-beta"
+    implementation "androidx.constraintlayout:constraintlayout-compose:1.0.1"
 
 
     testImplementation 'junit:junit:4.13.2'

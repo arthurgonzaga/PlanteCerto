@@ -9,6 +9,7 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.drawWithCache
 import androidx.compose.ui.graphics.BlendMode
@@ -34,8 +35,10 @@ fun TopInfoLayout() {
     Box {
         Box(Modifier.fillMaxWidth()) {
             Image(
+                modifier = Modifier.fillMaxWidth(),
                 painter = painterResource(id = pageData.image),
-                contentDescription = null
+                contentDescription = null,
+                alignment = Alignment.TopEnd
             )
         }
         Column(
@@ -61,6 +64,7 @@ fun TopInfoLayout() {
             )
             Spacer(Modifier.height(44.dp))
             Text(
+                modifier = Modifier.fillMaxWidth(0.5f),
                 text = pageData.title,
                 color = getPallete().onBackground,
                 style = MaterialTheme.typography.h1

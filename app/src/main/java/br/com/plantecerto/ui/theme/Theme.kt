@@ -15,6 +15,7 @@ import androidx.compose.material.lightColors
 import androidx.compose.material.ripple.LocalRippleTheme
 import androidx.compose.runtime.*
 import androidx.compose.runtime.livedata.observeAsState
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalView
 import androidx.compose.ui.unit.dp
@@ -34,7 +35,7 @@ val LocalTheme = compositionLocalOf { mutableStateOf(Themes.CORN) }
 fun PlanteCertoTheme(
     content: @Composable () -> Unit
 ) {
-    val theme = remember { mutableStateOf(Themes.CORN) }
+    val theme = rememberSaveable { mutableStateOf(Themes.CORN) }
 
     CompositionLocalProvider(
         LocalRippleTheme provides NoRippleTheme,

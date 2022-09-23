@@ -1,9 +1,11 @@
 package br.com.plantecerto.ui.components
 
+import android.app.Activity
 import androidx.annotation.DrawableRes
 import androidx.compose.animation.core.FloatTweenSpec
 import androidx.compose.animation.core.LinearOutSlowInEasing
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -16,6 +18,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.ColorFilter
+import androidx.compose.ui.graphics.toArgb
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -37,12 +42,12 @@ data class ListData(
 )
 
 private val DefaultList = listOf(
-    ListData(R.drawable.ic_launcher_background, "Milho", Themes.CORN),
-    ListData(R.drawable.ic_launcher_background, "Café", Themes.COFFEE),
-    ListData(R.drawable.ic_launcher_background, "Feijão", Themes.BEANS),
-    ListData(R.drawable.ic_launcher_background, "Soja", Themes.SOY),
-    ListData(R.drawable.ic_launcher_background, "Banana", Themes.BANANA),
-    ListData(R.drawable.ic_launcher_background, "Goiaba", Themes.GUAVA),
+    ListData(R.drawable.ic_milho, "Milho", Themes.CORN),
+    ListData(R.drawable.ic_cafe, "Café", Themes.COFFEE),
+    ListData(R.drawable.ic_feijao, "Feijão", Themes.BEANS),
+    ListData(R.drawable.ic_soja, "Soja", Themes.SOY),
+    ListData(R.drawable.ic_banana, "Banana", Themes.BANANA),
+    ListData(R.drawable.ic_goiaba, "Goiaba", Themes.GUAVA),
 )
 
 @OptIn(ExperimentalMaterialApi::class)
@@ -57,28 +62,36 @@ fun ListBottomSheet(
         bottomSheetState = BottomSheetState(BottomSheetValue.Collapsed)
     )
     val theme = LocalTheme.current
+    val window = (LocalContext.current as Activity).window
 
     BottomSheetScaffold(
-        sheetPeekHeight = 38.dp,
+        sheetPeekHeight = 44.dp,
         sheetBackgroundColor = White,
         sheetShape = ListBottomSheetShape,
         scaffoldState = state,
         sheetContent = {
             Column(
-                modifier = Modifier
-                    .noRippleClickable {
-                        coroutineScope.launch {
-                            state.bottomSheetState.expand()
-                        }
-                },
+                modifier = Modifier.noRippleClickable {
+                    coroutineScope.launch {
+                        state.bottomSheetState.expand()
+                    }
+                }
             ) {
-                Spacer(modifier = Modifier.height(48.dp))
-                Column {
-                    DefaultList.forEach { item ->
+                Spacer(modifier = Modifier.height(20.dp))
+                Box(
+                    modifier = Modifier
+                        .align(alignment = Alignment.CenterHorizontally)
+                        .background(color = Gray, MaterialTheme.shapes.medium)
+                        .size(width = 36.dp, height = 4.dp)
+                )
+                Spacer(modifier = Modifier.height(20.dp))
+                LazyColumn {
+                    items(DefaultList)  { item ->
                         ListItem(
                             data = item,
                             onClick = {
                                 theme.value = it.theme
+                                window.decorView.setBackgroundColor( it.theme.pallete.background.toArgb())
                                 coroutineScope.launch {
                                     state.bottomSheetState.collapse()
                                 }
@@ -116,6 +129,7 @@ fun ListItem(
                 )
         ) {
             Image(
+                modifier = Modifier.padding(2.dp),
                 painter = painterResource(id = data.imageId),
                 contentDescription = null
             )
@@ -129,7 +143,10 @@ fun ListItem(
         Spacer(modifier = Modifier.weight(1.0f))
         Image(
             modifier = Modifier.size(24.dp),
-            painter = painterResource(id = data.imageId),
+            painter = painterResource(id = R.drawable.ic_arrow),
+            colorFilter = ColorFilter.tint(
+                color = getPallete().secondary
+            ),
             contentDescription = null,
         )
     }
