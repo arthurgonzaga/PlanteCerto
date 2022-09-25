@@ -21,6 +21,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
+import androidx.compose.ui.graphics.luminance
 import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
@@ -32,6 +33,7 @@ import br.com.plantecerto.domain.data.Themes
 import br.com.plantecerto.ui.theme.*
 import br.com.plantecerto.ui.utils.LogCompositions
 import br.com.plantecerto.ui.utils.noRippleClickable
+import com.google.accompanist.systemuicontroller.rememberSystemUiController
 import kotlinx.coroutines.async
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -59,6 +61,7 @@ fun ListBottomSheet(
 ) {
     LogCompositions("ListBottomSheet","")
     val coroutineScope = rememberCoroutineScope()
+    val systemUiController = rememberSystemUiController()
 
     val state = rememberBottomSheetScaffoldState(
         bottomSheetState = BottomSheetState(BottomSheetValue.Collapsed)
@@ -94,6 +97,10 @@ fun ListBottomSheet(
                             onClick = {
                                 theme.value = it.theme
                                 window.decorView.setBackgroundColor( it.theme.pallete.background.toArgb())
+                                systemUiController.setStatusBarColor(
+                                    color = Color.Transparent,
+                                    darkIcons = it.theme.pallete.background.luminance() > 0.5
+                                )
                                 coroutineScope.launch {
                                     state.bottomSheetState.collapse()
                                 }
@@ -108,7 +115,7 @@ fun ListBottomSheet(
     )
     LaunchedEffect(true) {
         launch {
-            delay(2000)
+            delay(1500)
             state.bottomSheetState.animateTo(
                 BottomSheetValue.Expanded,
                 anim = tween(durationMillis = 1000)

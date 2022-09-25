@@ -50,7 +50,7 @@ fun TopInfoLayout() {
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(
-                    top = 24.dp,
+                    top = 52.dp,
                     start = 36.dp
                 )
         ) {

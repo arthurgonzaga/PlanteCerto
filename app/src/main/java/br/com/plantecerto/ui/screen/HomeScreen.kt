@@ -8,6 +8,7 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.graphics.BlendMode
 import androidx.compose.ui.graphics.ImageBitmap
 import androidx.compose.ui.layout.ContentScale
@@ -48,7 +49,7 @@ fun HomeTopInfoLayout() {
         Box(Modifier.fillMaxWidth()) {
             pageData.image?.let { imageId ->
                 Image(
-                    modifier = Modifier.fillMaxWidth(),
+                    modifier = Modifier.fillMaxWidth().alpha(0.6f),
                     painter = painterResource(id = imageId),
                     contentDescription = null,
                     alignment = Alignment.TopEnd,
@@ -60,7 +61,7 @@ fun HomeTopInfoLayout() {
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(
-                    top = 24.dp,
+                    top = 52.dp,
                     start = 36.dp
                 )
         ) {

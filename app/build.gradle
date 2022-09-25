@@ -82,6 +82,7 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-viewmodel-compose:$lifecycle_version")
 
     implementation "com.google.accompanist:accompanist-pager:0.26.2-beta"
+    implementation "com.google.accompanist:accompanist-systemuicontroller:0.26.2-beta"
     implementation "com.google.accompanist:accompanist-pager-indicators:0.26.2-beta"
     implementation "androidx.constraintlayout:constraintlayout-compose:1.0.1"
 
