@@ -60,10 +60,11 @@ android {
             excludes += '/META-INF/{AL2.0,LGPL2.1}'
         }
     }
-
-    lintOptions {
+    lint {
         checkReleaseBuilds false
     }
+    namespace 'br.com.plantecerto'
+
 }
 
 dependencies {
@@ -92,6 +93,11 @@ dependencies {
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
     implementation 'com.squareup.okhttp3:logging-interceptor:4.2.1'
+
+    def room_version = "2.4.3"
+
+    implementation "androidx.room:room-runtime:$room_version"
+    annotationProcessor "androidx.room:room-compiler:$room_version"
 
 
     testImplementation 'junit:junit:4.13.2'

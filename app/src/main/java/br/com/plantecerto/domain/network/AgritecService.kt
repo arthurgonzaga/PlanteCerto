@@ -19,7 +19,6 @@ interface AgritecService {
 
 
 
-
     companion object {
         private val client = OkHttpClient.Builder()
             .addInterceptor(AgritecInteceptor())
