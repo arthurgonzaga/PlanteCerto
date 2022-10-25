@@ -24,25 +24,9 @@ interface EmbrapaService {
     ): AccessTokenResponse
 
     companion object {
-        private val client = OkHttpClient.Builder().addInterceptor(LoggingInterceptor).build()
-
-        private var _instance: EmbrapaService? = null
-        val instance: EmbrapaService
-            get() {
-                return if (_instance != null) {
-                    _instance!!
-                } else {
-                    _instance = Retrofit.Builder()
-                        .baseUrl("https://api.cnptia.embrapa.br/")
-                        .client(client)
-                        .addConverterFactory(GsonConverterFactory.create())
-                        .build().create(EmbrapaService::class.java)
-                    _instance!!
-                }
-            }
 
         suspend fun init() {
-            AgritecInteceptor.accessToken = instance.getAccessToken().get()
+
         }
     }
 }

@@ -23,25 +23,4 @@ interface IpInfoService {
         @Query("token") token: String = BuildConfig.IP_INFO_TOKEN
     ): LocationResponse
 
-
-    companion object {
-        private val client = OkHttpClient.Builder()
-            .addInterceptor(LoggingInterceptor)
-            .build()
-
-        private var _instance: IpInfoService? = null
-        val instance: IpInfoService
-            get() {
-                return if (_instance != null) {
-                    _instance!!
-                } else {
-                    _instance = Retrofit.Builder()
-                        .baseUrl("https://ipinfo.io")
-                        .client(client)
-                        .addConverterFactory(GsonConverterFactory.create())
-                        .build().create(IpInfoService::class.java)
-                    _instance!!
-                }
-            }
-    }
 }
