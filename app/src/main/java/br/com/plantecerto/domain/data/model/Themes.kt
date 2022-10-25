@@ -1,4 +1,4 @@
-package br.com.plantecerto.domain.data
+package br.com.plantecerto.domain.data.model
 
 import br.com.plantecerto.domain.info.*
 import br.com.plantecerto.ui.theme.*

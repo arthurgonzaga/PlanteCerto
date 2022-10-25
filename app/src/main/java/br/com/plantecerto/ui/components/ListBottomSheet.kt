@@ -2,13 +2,10 @@ package br.com.plantecerto.ui.components
 
 import android.app.Activity
 import androidx.annotation.DrawableRes
-import androidx.compose.animation.core.FloatTweenSpec
-import androidx.compose.animation.core.LinearOutSlowInEasing
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -25,16 +22,13 @@ import androidx.compose.ui.graphics.luminance
 import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.viewmodel.compose.viewModel
 import br.com.plantecerto.R
-import br.com.plantecerto.domain.data.Themes
+import br.com.plantecerto.domain.data.model.Themes
 import br.com.plantecerto.ui.theme.*
 import br.com.plantecerto.ui.utils.LogCompositions
 import br.com.plantecerto.ui.utils.noRippleClickable
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
-import kotlinx.coroutines.async
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 

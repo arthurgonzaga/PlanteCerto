@@ -1,4 +1,4 @@
-package br.com.plantecerto.domain.data
+package br.com.plantecerto.domain.data.model
 
 import androidx.annotation.DrawableRes
 

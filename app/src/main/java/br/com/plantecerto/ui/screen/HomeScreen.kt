@@ -16,8 +16,6 @@ import androidx.compose.ui.res.imageResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import br.com.plantecerto.R
-import br.com.plantecerto.domain.data.Themes
-import br.com.plantecerto.ui.components.TopInfoLayout
 import br.com.plantecerto.ui.theme.LocalTheme
 import br.com.plantecerto.ui.theme.getPallete
 import br.com.plantecerto.ui.utils.LogCompositions

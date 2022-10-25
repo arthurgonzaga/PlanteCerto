@@ -1,8 +1,8 @@
 package br.com.plantecerto.domain.info
 
 import br.com.plantecerto.R
-import br.com.plantecerto.domain.data.PageData
-import br.com.plantecerto.domain.data.TextInfo
+import br.com.plantecerto.domain.data.model.PageData
+import br.com.plantecerto.domain.data.model.TextInfo
 
 
 val CornPageData = PageData(

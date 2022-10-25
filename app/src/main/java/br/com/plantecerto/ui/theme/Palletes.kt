@@ -5,11 +5,9 @@ package br.com.plantecerto.ui.theme
 import android.annotation.SuppressLint
 import androidx.compose.animation.animateColor
 import androidx.compose.animation.core.updateTransition
-import androidx.compose.material.lightColors
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.graphics.Color
-import br.com.plantecerto.domain.data.Themes
+import br.com.plantecerto.domain.data.model.Themes
 
 data class Pallete(
     val primary: Color,

@@ -1,7 +1,7 @@
 package br.com.plantecerto.domain.info
 
 import br.com.plantecerto.R
-import br.com.plantecerto.domain.data.PageData
+import br.com.plantecerto.domain.data.model.PageData
 
 
 val SoyPageData = PageData(

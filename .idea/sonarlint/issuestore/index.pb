@@ -7,8 +7,6 @@ n
 >app/src/main/java/br/com/plantecerto/ui/utils/NoRippleTheme.kt,6\a\6ab3d444cba81a410d0a3ecf7fb0ed8f466a9c0a
 F
 app/proguard-rules.pro,9\e\9e08934d811afe28fbc77aaa3c0d747b94348db9
-A
-gradle.properties,2\a\2afbb999f001938c88fa43fc2ef52abf0f8213e4
 X
 (gradle/wrapper/gradle-wrapper.properties,f\b\fbe448ebfc3eb2d4e308f6b8b043666f5b57235e
 ?
@@ -19,14 +17,10 @@ q
 Aapp/src/main/java/br/com/plantecerto/ui/components/TabSelector.kt,4\e\4ee019ace4ac0d68388f2bf39809c73279873e9e
 s
 Capp/src/main/java/br/com/plantecerto/ui/utils/ModifierExtentions.kt,a\b\ab8835c5cbdc6dabd0b107942f14e8af2172f1e6
-<
-build.gradle,f\0\f07866736216be0ee2aba49e392191aeae700a35
 o
 ?app/src/main/java/br/com/plantecerto/domain/info/SoyPageData.kt,f\9\f95d8551524ee0eefd80dd1c8c8205c5e0649685
 q
 Aapp/src/main/java/br/com/plantecerto/domain/info/BeansPageData.kt,d\0\d0f380e5b878d1e6663e45d402837558f7e50998
-P
- app/src/main/AndroidManifest.xml,8\c\8c55c3ccc257e5907959013f99656e4c8ec3903e
 r
 Bapp/src/main/java/br/com/plantecerto/domain/info/CoffeePageData.kt,6\9\691e501d613e3989cf7b5965e165b6e362a45a0b
 n
@@ -41,5 +35,9 @@ p
 @app/src/main/java/br/com/plantecerto/domain/info/CornPageData.kt,3\6\36d1a06a0f19e84bac6e12aab6922f7440fffd49
 n
 >app/src/main/java/br/com/plantecerto/ui/screen/DetailScreen.kt,7\9\79661c6a9b732f72c01beb3c24162fa09027237a
+s
+Capp/src/main/java/br/com/plantecerto/ui/components/TopInfoLayout.kt,4\6\4691038b7392e41152b1bd5ea7778d067a37cb70
+l
+<app/src/main/java/br/com/plantecerto/ui/screen/HomeScreen.kt,7\9\7914ff9853463e430514d2e159920ba09f628906
 j
 :app/src/main/java/br/com/plantecerto/domain/data/Themes.kt,c\c\cc941d41c18de3315891fd79669b73bdcffff8a6
