@@ -9,7 +9,7 @@ import androidx.room.Query
 @Dao
 interface MunicipioDao {
 
-    @Query("SELECT codigoIBGE FROM municipios WHERE uf=:uf AND nome=:nome")
-    suspend fun getCodigoIbgeFrom(uf: String, nome: String): Int
+    @Query("SELECT codigoIBGE FROM municipios WHERE uf=:uf AND nome=:municipio")
+    suspend fun getCodigoIbgeFrom(uf: String, municipio: String): Int
 
 }

@@ -11,6 +11,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:name=".PlanteCertoApplication"
+        android:usesCleartextTraffic="true"
         android:theme="@style/Theme.PlanteCerto">
         <activity
             android:name=".MainActivity"

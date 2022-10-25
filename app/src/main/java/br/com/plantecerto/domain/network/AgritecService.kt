@@ -17,4 +17,10 @@ interface AgritecService {
     @GET("agritec/v1/health")
     suspend fun checkHealth(): Response<ResponseBody>
 
+    @GET("agritec/v1/zoneamento")
+    suspend fun zoneamento(
+        @Query("codigoIBGE") codigoIBGE: Int,
+        @Query("idCultura") cultura: Int,
+    ): Response<ResponseBody>
+
 }

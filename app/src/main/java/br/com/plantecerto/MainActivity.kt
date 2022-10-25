@@ -25,16 +25,11 @@ import javax.inject.Inject
 @AndroidEntryPoint
 class MainActivity: ComponentActivity() {
 
-    @Inject
-    lateinit var dao: MunicipioDao
     
     @OptIn(ExperimentalPagerApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         WindowCompat.setDecorFitsSystemWindows(window, false)
-        lifecycleScope.launch {
-            Log.d("MainActivity", "onCreate: ${dao.getCodigoIbgeFrom(uf = "PB", nome = "QUEIMADAS")}")
-        }
         setContent {
             val pagerState = rememberPagerState()
             WindowInsets {
