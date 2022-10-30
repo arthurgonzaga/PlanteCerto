@@ -20,6 +20,7 @@ android {
             useSupportLibrary true
         }
         signingConfig signingConfigs.debug
+
         Properties properties = new Properties()
         properties.load(project.rootProject.file("local.properties").newDataInputStream())
         buildConfigField "String", "IP_INFO_TOKEN", "\"${properties.getProperty("IP_INFO_TOKEN")}\""

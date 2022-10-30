@@ -23,4 +23,14 @@ interface AgritecService {
         @Query("idCultura") cultura: Int,
     ): Response<ResponseBody>
 
+    @GET("agritec/v1/produtividade")
+    suspend fun produtividade(
+        @Query("idCultura") idCultura: Int,
+        @Query("idCultivar") idCultivar: Int,
+        @Query("codigoIBGE") codigoIBGE: Int,
+        @Query("dataPlantio") dataPlantio: String,
+        @Query("expectativaProdutividade") expectativaProdutividade: Float,
+        @Query("cad") cad: Int = 1,
+    ): Response<ResponseBody>
+
 }

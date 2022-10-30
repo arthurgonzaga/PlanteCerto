@@ -2,6 +2,7 @@ package br.com.plantecerto.domain.di
 
 import android.content.Context
 import androidx.room.Room
+import br.com.plantecerto.domain.database.CulturasDAO
 import br.com.plantecerto.domain.database.MunicipioDao
 import br.com.plantecerto.domain.database.PlanteCertoDB
 import br.com.plantecerto.domain.network.AgritecService
@@ -33,5 +34,11 @@ object DatabaseModule {
     fun providesMunicipioDao(
         database: PlanteCertoDB
     ): MunicipioDao = database.municipioDao()
+
+    @Singleton
+    @Provides
+    fun providesCulturasDao(
+        database: PlanteCertoDB
+    ): CulturasDAO = database.culturasDao()
 
 }
