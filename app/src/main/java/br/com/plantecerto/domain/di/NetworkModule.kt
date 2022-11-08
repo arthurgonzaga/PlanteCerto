@@ -1,10 +1,10 @@
 package br.com.plantecerto.domain.di
 
-import br.com.plantecerto.domain.network.AgritecService
-import br.com.plantecerto.domain.network.EmbrapaService
-import br.com.plantecerto.domain.network.IpInfoService
-import br.com.plantecerto.domain.network.LoggingInterceptor
-import br.com.plantecerto.domain.network.interceptor.AgritecInteceptor
+import br.com.plantecerto.domain.data.network.AgritecService
+import br.com.plantecerto.domain.data.network.EmbrapaService
+import br.com.plantecerto.domain.data.network.IpInfoService
+import br.com.plantecerto.domain.data.network.LoggingInterceptor
+import br.com.plantecerto.domain.data.network.interceptor.AgritecInteceptor
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -21,7 +21,9 @@ import javax.inject.Singleton
 @Module
 object NetworkModule {
 
-    private val agritecClient = OkHttpClient.Builder().addInterceptor(AgritecInteceptor()).addInterceptor(LoggingInterceptor).build()
+    private val agritecClient = OkHttpClient.Builder().addInterceptor(AgritecInteceptor()).addInterceptor(
+        LoggingInterceptor
+    ).build()
     private val basicClient = OkHttpClient.Builder().addInterceptor(LoggingInterceptor).build()
 
     @Singleton

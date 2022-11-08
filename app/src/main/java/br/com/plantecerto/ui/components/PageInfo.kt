@@ -15,9 +15,9 @@ import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import br.com.plantecerto.domain.data.model.ImageInfo
-import br.com.plantecerto.domain.data.model.Info
-import br.com.plantecerto.domain.data.model.TextInfo
+import br.com.plantecerto.domain.data.entity.model.ImageInfo
+import br.com.plantecerto.domain.data.entity.model.Info
+import br.com.plantecerto.domain.data.entity.model.TextInfo
 import br.com.plantecerto.ui.theme.CornPallete
 import br.com.plantecerto.ui.theme.Pallete
 import br.com.plantecerto.ui.theme.PlanteCertoTheme
@@ -65,7 +65,7 @@ fun PageInfo(
                     color = pallete.onBackground
                 )
             }
-            AnimatedVisibility(visible = info.title != null) {
+            AnimatedVisibility(visible = info.text != null) {
                 Text(
                     modifier = Modifier.padding(top = 16.dp),
                     text = info.text!!,

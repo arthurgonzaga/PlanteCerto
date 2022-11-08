@@ -1,17 +1,12 @@
 package br.com.plantecerto
 
 import android.os.Bundle
-import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.core.view.WindowCompat
-import androidx.lifecycle.lifecycleScope
-import br.com.plantecerto.domain.data.model.Themes
-import br.com.plantecerto.domain.database.MunicipioDao
-import br.com.plantecerto.domain.network.AgritecService
-import br.com.plantecerto.domain.network.IpInfoService
+import br.com.plantecerto.domain.data.entity.model.Themes
 import br.com.plantecerto.ui.components.*
-import br.com.plantecerto.ui.screen.DetailScreen
+import br.com.plantecerto.ui.screen.detail.DetailScreen
 import br.com.plantecerto.ui.screen.HomeScreen
 import br.com.plantecerto.ui.theme.LocalTheme
 import br.com.plantecerto.ui.theme.PlanteCertoTheme
@@ -19,8 +14,6 @@ import br.com.plantecerto.ui.utils.LogCompositions
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.rememberPagerState
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.launch
-import javax.inject.Inject
 
 @AndroidEntryPoint
 class MainActivity: ComponentActivity() {

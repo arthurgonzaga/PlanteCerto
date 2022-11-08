@@ -2,8 +2,8 @@ package br.com.plantecerto
 
 import android.app.Application
 import br.com.plantecerto.domain.di.NetworkModule
-import br.com.plantecerto.domain.network.EmbrapaService
-import br.com.plantecerto.domain.network.interceptor.AgritecInteceptor
+import br.com.plantecerto.domain.data.network.EmbrapaService
+import br.com.plantecerto.domain.data.network.interceptor.AgritecInteceptor
 import dagger.hilt.android.HiltAndroidApp
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers

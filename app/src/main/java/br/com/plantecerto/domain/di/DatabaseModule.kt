@@ -2,10 +2,10 @@ package br.com.plantecerto.domain.di
 
 import android.content.Context
 import androidx.room.Room
-import br.com.plantecerto.domain.database.CulturasDAO
-import br.com.plantecerto.domain.database.MunicipioDao
-import br.com.plantecerto.domain.database.PlanteCertoDB
-import br.com.plantecerto.domain.network.AgritecService
+import br.com.plantecerto.domain.data.database.CulturasDAO
+import br.com.plantecerto.domain.data.database.MunicipioDao
+import br.com.plantecerto.domain.data.database.PlanteCertoDB
+import br.com.plantecerto.domain.data.network.AgritecService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

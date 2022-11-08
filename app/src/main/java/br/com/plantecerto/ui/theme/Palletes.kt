@@ -7,7 +7,7 @@ import androidx.compose.animation.animateColor
 import androidx.compose.animation.core.updateTransition
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
-import br.com.plantecerto.domain.data.model.Themes
+import br.com.plantecerto.domain.data.entity.model.Themes
 
 data class Pallete(
     val primary: Color,

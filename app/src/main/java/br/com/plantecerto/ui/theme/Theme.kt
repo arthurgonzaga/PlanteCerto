@@ -4,7 +4,7 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.ripple.LocalRippleTheme
 import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
-import br.com.plantecerto.domain.data.model.Themes
+import br.com.plantecerto.domain.data.entity.model.Themes
 import br.com.plantecerto.ui.utils.NoRippleTheme
 
 const val ThemeLabelTransition = "ThemeLabelTransition"
